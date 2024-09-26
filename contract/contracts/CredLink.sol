@@ -15,6 +15,11 @@ contract CredLinkContract {
     mapping (address => borrowerDetails[]) approvedBorrowers;
 
     mapping(address => borrowerDetails) borrowerData;
+
+    constructor(address _tokenAddress) {
+        owner = msg.sender;
+        tokenAddress = _tokenAddress;
+    }
     
     struct borrowerDetails {
         uint duration;
