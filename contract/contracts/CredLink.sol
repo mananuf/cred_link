@@ -69,12 +69,6 @@ contract CredLinkContract {
         require(availableLoans[_lender] > 0, 'Not Available');
 
         interestedBorrowers[_lender].push(msg.sender);
-        
-        // interestedBorrowers[_lender].push(borrowerDetails({
-        //     duration: _duration,
-        //     amount: _amount,
-        //     hasBorrow: false 
-        // }));
 
         emit Events.BorrowerApplySuccessful(_lender, msg.sender, _amount, _duration); 
     }
