@@ -50,7 +50,7 @@ contract CredLinkContract {
         require(!borrowerData[_borrowerToApprove].hasBorrow, "cannot borrow multiple times");
 
         uint borrowAmount = borrowerData[_borrowerToApprove].amount;
-        borrowerData borrowerDataDetails = borrowerData[_borrowerToApprove];
+        
 
         if(availableLoans[msg.sender] >= borrowAmount) {
             availableLoans[msg.sender] -= borrowAmount;
