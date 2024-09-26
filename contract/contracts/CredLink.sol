@@ -12,18 +12,25 @@ contract CredLinkContract {
     
     struct borrowerDetails {
         address borrowerAddress;
-        uint loanId;
         uint duration;
         uint amount;
     }
 
     // setter functions
-
     function lenderDeposit(uint _amount) external {}
 
     function approveBorrower(address _borrowerToApprove, uint _amount) external {}
 
-    function applyForLoan(uint _loanId, uint _duration, uint _amount) external {}
+    function applyForLoan(address _lender, uint _duration, uint _amount) external {
+        require(availableLoans[_lender] > 0, 'Not Available');
+        
+        interestedBorrowers[_lender].push(borrowerDetails({
+            borrowerAddress: msg.sender,
+            duration: _duration,
+            amount: _amount
+        }));
+
+    }
 
     function repayLoan(uint loanId) external {}
 
