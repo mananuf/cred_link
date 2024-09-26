@@ -11,8 +11,8 @@ contract CredLinkContract {
     address owner;
     address tokenAddress;
     mapping (address => uint) availableLoans;
-    mapping (address => borrowerDetails[]) interestedBorrowers;
-    mapping (address => borrowerDetails[]) approvedBorrowers;
+    mapping (address => address[]) interestedBorrowers;
+    mapping (address => address[]) approvedBorrowers;
 
     mapping(address => borrowerDetails) borrowerData;
 
@@ -50,10 +50,12 @@ contract CredLinkContract {
         require(!borrowerData[_borrowerToApprove].hasBorrow, "cannot borrow multiple times");
 
         uint borrowAmount = borrowerData[_borrowerToApprove].amount;
+        borrowerData borrowerDataDetails = borrowerData[_borrowerToApprove];
 
         if(availableLoans[msg.sender] >= borrowAmount) {
             availableLoans[msg.sender] -= borrowAmount;
             borrowerData[_borrowerToApprove].hasBorrow = true;
+            approvedBorrowers[msg.sender].push(_borrowerToApprove);
 
             IERC20(tokenAddress).transferFrom(address(this), _borrowerToApprove, borrowAmount);
         }
