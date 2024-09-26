@@ -63,17 +63,25 @@ contract CredLinkContract {
     }
 
     function applyForLoan(address _lender, uint _duration, uint _amount) external {
+        require(!borrowerData[msg.sender].hasBorrow, 'repay loan to be eligible for borrowing');
         require(availableLoans[_lender] > 0, 'Not Available');
+
+        interestedBorrowers[_lender].push(msg.sender);
         
-        interestedBorrowers[_lender].push(borrowerDetails({
-            borrowerAddress: msg.sender,
-            duration: _duration,
-            amount: _amount
-        }));
+        // interestedBorrowers[_lender].push(borrowerDetails({
+        //     duration: _duration,
+        //     amount: _amount,
+        //     hasBorrow: false 
+        // }));
+
+        emit Events.BorrowerApplySuccessful(_lender, msg.sender, _amount, _duration); 
+    }
+
+    function repayLoan(address _lender) external {
 
     }
 
-    function repayLoan(uint loanId) external {}
+    function openDispute() external {}
 
 
     // getter functions
@@ -82,10 +90,4 @@ contract CredLinkContract {
     function viewAvailableLoans() external {}
 
     function viewApproveBorrowers() external {}
-
-    function openDispute() external {}
-
-    
-
-
 }
