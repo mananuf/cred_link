@@ -5,5 +5,5 @@ pragma solidity ^0.8.27;
 // import "hardhat/console.sol";
 
 library Errors {
-    
+    error InsufficientBalance();
 }
