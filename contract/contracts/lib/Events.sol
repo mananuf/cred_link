@@ -5,5 +5,7 @@ pragma solidity ^0.8.27;
 // import "hardhat/console.sol";
 
 library Events {
-    
+    event LenderDepositSuccessful(address indexed _depositor, uint indexed _amount);
+
+    event BorrowerApproveSuccessful(address indexed _approverAddress, address indexed _borrowerAddress, uint indexed _amount);
 }
