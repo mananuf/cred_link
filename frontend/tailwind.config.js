@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'custom-svg': "url('/src/assets/svg/backgroundImage.svg')",
+      },
       colors:{
         primary:{
           100: "",
