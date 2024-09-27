@@ -2,16 +2,18 @@ import React from 'react'
 
 const Borrow = () => {
   return (
-    <div>
-      <h2>Set Minimum Balance Requirement</h2>
-      <p>Total fiat balance</p>
-      <h1>$20,000.00</h1>
-      <div>
-        <p>Min Amount:</p>
-        <input type="text" />
+    <div className='flex justify-center al'>
+      <div className='w-[312px] text-white border'>
+        <h2>Set Minimum Balance Requirement</h2>
+        <p className='p-[10px]'>Total fiat balance</p>
+        <h1 className='font-bold'>$20,000.00</h1>
+        <div className='flex'>
+          <p>Min Amount:</p>
+          <input type="text" className='border-collapse' />
+        </div>
+        <hr />
+        <button>Borrow </button>
       </div>
-      <hr />
-      <button>Borrow <img src={} alt="" /></button>
     </div>
   )
 }
