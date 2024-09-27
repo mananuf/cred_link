@@ -18,7 +18,7 @@ const LenderDashboard = () => {
         <p className='ml-[65%]'>View all transactions</p>
       </div>
       <div className='border-[2px] rounded-[10px] ml-[10px] text-white'>
-        <div className='flex flex flex-row justify-between w-[1262px] align-left ml-[20px] p-[10px]'>
+        <div className='flex flex-row justify-between w-[1262px] align-left ml-[20px] p-[10px]'>
           <p className='flex-1 text-left'>Team</p>
           <p className='flex-1 text-left'>Transaction type</p>
           <p className='flex-1 text-left'>Price</p>
