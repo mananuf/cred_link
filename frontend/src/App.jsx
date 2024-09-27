@@ -22,13 +22,13 @@ function App() {
       <Route path="/" element={<Root/>}>
 
         <Route index element={<Home/>}/>
-        <Route path="LenderDAshboard" element={<LenderDashboard/>}/>
+        <Route path="LenderDAshboard" element={<BorrowersPage/>}/>
 
         <Route index element={<Home/>}/>
         <Route path="/lenderDashboard" element={<LenderDashboard />} />
         
 
-        <Route path="/borrowersDashboard" element={<BorrowersPage/>}/>
+        {/* <Route path="/borrowersDashboard" element={<BorrowersPage/>}/> */}
       </Route>
 
     )
