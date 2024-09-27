@@ -5,6 +5,7 @@ import vector3 from "../assets/Vector (2).svg";
 import Transactions from "../Components/Transactions";
 import ActiveLoan from "../Components/ActiveLoan";
 import notice from "../assets/notice.svg";
+import TransactionB from "../Components/TransactionB";
 
 const LenderDashboard = () => {
   return (
@@ -58,9 +59,9 @@ const LenderDashboard = () => {
               </div>
             </div>
             <div className="flex gap-8">
-            <Transactions/>
-            <Transactions/>
-            <Transactions/>
+            <TransactionB/>
+            <TransactionB/>
+            <TransactionB/>
             <button className="border-2 border-dotted text-white border-[#584BFF] px-8  mt-4 rounded-xl">+Add Currency</button>
             </div>
           </div>
