@@ -35,7 +35,7 @@ contract CredLinkContract {
     // setter functions
 
     function lenderDeposit(uint _amount) external {
-        require(_amount < 0, "cannot send zero token");
+        require(_amount > 0, "cannot send zero token");
         uint lenderTokenBalance = IERC20(tokenAddress).balanceOf(msg.sender);
 
         if(_amount > lenderTokenBalance) {
@@ -92,9 +92,13 @@ contract CredLinkContract {
 
 
     // getter functions
-    function viewInterestedBorrowers() external view returns(address[] memory){
+    function viewInterestedBorrowers() external view returns(borrowerDetails[] memory){
         address[] memory interestedBorrowersdata = interestedBorrowers[msg.sender];
-        return interestedBorrowersdata;
+        borrowerDetails[] memory borrowersInfo = new borrowerDetails[](interestedBorrowersdata.length);
+        for(uint j; j <= interestedBorrowersdata.length; j++) {
+            borrowersInfo[j] = borrowerData[interestedBorrowersdata[j]];
+        }
+        return borrowersInfo;
     }
 
     function viewAvailableLoans() external view returns(address[] memory, uint[] memory){
@@ -102,13 +106,17 @@ contract CredLinkContract {
         uint[] memory lendersAmount = new uint[](numberOfLenders);
         for(uint j; j <= lenders.length; j++) {
             lendersAmount[j] = availableLoans[lenders[j]];
-            return (lenders, lendersAmount);
         }
+        return (lenders, lendersAmount);
     }
 
-    function viewApproveBorrowers() external view returns(address[] memory){
+    function viewApproveBorrowers() external view returns(borrowerDetails[] memory){
         address[] memory approvedBorrowersdata = approvedBorrowers[msg.sender];
-        return approvedBorrowersdata;
+        borrowerDetails[] memory borrowersInfo = new borrowerDetails[](approvedBorrowersdata.length);
+        for(uint j; j <= approvedBorrowersdata.length; j++) {
+            borrowersInfo[j] = borrowerData[approvedBorrowersdata[j]];
+        }
+        return borrowersInfo;
     }
 
     function openDispute() external {}
