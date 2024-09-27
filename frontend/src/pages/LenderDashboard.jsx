@@ -6,6 +6,7 @@ import Transactions from "../Components/Transactions";
 import ActiveLoan from "../Components/ActiveLoan";
 import notice from "../assets/notice.svg";
 import TransactionB from "../Components/TransactionB";
+import Lender from "../Components/Lender";
 
 const LenderDashboard = () => {
   return (
@@ -81,6 +82,7 @@ const LenderDashboard = () => {
             <ActiveLoan/>
           </div>
         </div>
+          <Lender/>
       </section>
     </div>
   );

@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Home from "./Components/Home";
-import LenderDashboard from "./Components/LenderDashboard";
+// import Lender from "./Components/Lender";
 import Root from "./Root";
 import Borrow from "./Components/Borrow";
 
@@ -21,11 +21,12 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root/>}>
 
-        <Route index element={<Borrow/>}/>
-        {/* <Route path="LenderDAshboard" element={<LenderDashboard/>}/> */}
+        <Route index element={<Home/>}/>
+        <Route path="LenderDAshboard" element={<LenderDashboard/>}/>
 
         <Route index element={<Home/>}/>
-        <Route path="/lenderDashboard" element={<LenderDashboard/>}/>
+        <Route path="/lenderDashboard" element={<LenderDashboard />} />
+        
 
         <Route path="/borrowersDashboard" element={<BorrowersPage/>}/>
       </Route>

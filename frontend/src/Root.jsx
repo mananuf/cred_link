@@ -7,7 +7,7 @@ const Root =()=>{
         <div className=" w-[100vw] h-[100vh] bg-custom-svg bg-cover  bg-center  ">
             <Navbar/>
             <Outlet/>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     )
 }
