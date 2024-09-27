@@ -662,9 +662,14 @@ const ProvideLoanModal = () => {
 
     amount = ethers.utils.parseUnits(amount, 18);
 
-    const approveTx = await tokenContract.approve(contractAddress, amount);
+    const gasLimit = 100000;
+
+    const approveTx = await tokenContract.approve(contractAddress, amount, {
+      gasLimit: gasLimit,
+    });
     await approveTx.wait();
 
+    console.log(approveTx);
     const depositTx = await credlinkContract.deposit(amount);
     await depositTx.wait();
 
