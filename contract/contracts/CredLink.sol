@@ -14,6 +14,8 @@ contract CredLinkContract {
     mapping (address => address[]) interestedBorrowers;
     mapping (address => address[]) approvedBorrowers;
 
+    address[] lenders;
+
 
     mapping(address => borrowerDetails) borrowerData;
 
@@ -28,13 +30,7 @@ contract CredLinkContract {
         bool hasBorrow;
     }
 
-    struct lendersDetails {
-        address lenderAddress;
-        uint lendingAmount;
-    }
-
-    lendersDetails[] lenders; 
-
+    
 
     // setter functions
 
@@ -49,13 +45,7 @@ contract CredLinkContract {
         IERC20(tokenAddress).transferFrom(msg.sender, address(this), _amount);
 
         availableLoans[msg.sender] += _amount;
-
-        lendersDetails memory lenderData = lendersDetails({
-            lenderAddress: msg.sender,
-            lendingAmount: _amount
-        });
-
-        lenders.push(lenderData);
+        lenders.push(msg.sender);
 
         emit Events.LenderDepositSuccessful(msg.sender, _amount);
 
@@ -91,8 +81,13 @@ contract CredLinkContract {
         return interestedBorrowersdata;
     }
 
-    function viewAvailableLoans() external view returns(lendersDetails[] memory){
-        return lenders;
+    function viewAvailableLoans() external view returns(address[] memory, uint[] memory){
+        uint numberOfLenders = lenders.length;
+        uint[] memory lendersAmount = new uint[](numberOfLenders);
+        for(uint j; j <= lenders.length; j++) {
+            lendersAmount[j] = availableLoans[lenders[j]];
+            return (lenders, lendersAmount);
+        }
     }
 
     function viewApproveBorrowers() external view returns(address[] memory){
