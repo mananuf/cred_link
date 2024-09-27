@@ -14,7 +14,7 @@ const Navbar = () => {
         </div>
         {/*metamask connect botton  */}
 
-        <div className="w-48 h-11 flex flex-row items-center justify-center border rounded-3xl border-[#7AAFFF] border-2">
+        <div className="w-48 h-11 flex flex-row items-center justify-center rounded-3xl border-[#7AAFFF] border-2">
           <img src={Metamask} alt="metamask log" className="w-6 h-6"/>
           <h2 className="text-sm ml-2 text-white">Connect Wallet</h2>
         </div>
