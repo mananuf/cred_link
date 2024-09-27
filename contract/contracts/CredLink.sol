@@ -74,7 +74,14 @@ contract CredLinkContract {
     }
 
     function repayLoan(address _lender) external {
+        require(_lender != address(0), "cannot send to address zero");
+        require(IERC20(tokenAddress).balanceOf(msg.sender) >= borrowerData[msg.sender].amount , "insufficient balance");
 
+        borrowerData[msg.sender].hasBorrow = false;
+        
+        IERC20(tokenAddress).transferFrom(msg.sender, _lender, borrowerData[msg.sender].amount);
+
+        emit Events.RepaySuccessful(_lender, msg.sender, borrowerData[msg.sender].amount, block.timestamp);
     }
 
     function openDispute() external {}

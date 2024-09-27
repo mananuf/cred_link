@@ -10,4 +10,6 @@ library Events {
     event BorrowerApproveSuccessful(address indexed _approverAddress, address indexed _borrowerAddress, uint indexed _amount);
 
     event BorrowerApplySuccessful(address indexed _lender, address indexed _borrower, uint indexed _amount, uint _duration);
+
+    event RepaySuccessful(address indexed _lender, address indexed _borrower, uint indexed _amount, uint _timeOfRepay);
 }
