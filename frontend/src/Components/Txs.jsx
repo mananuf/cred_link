@@ -14,9 +14,7 @@ const Txs = () => {
   <p className="">BTC Bitcoin</p>
   <p className="">Loan</p>
   <p className="">$200</p>
-  <p className="">
-    44e25bc0ed840f97039of...eaf |
-  </p>
+  <p className="">44e25bc0ed840f97039of...eaf </p>
 </div>
 
         </div>

@@ -8,6 +8,7 @@ const TransactionB = () => {
                     <p className="flex flex-col gap-2"><img src={btc} alt="btc" />BTC</p>
                     <p className="flex flex-col gap-2"><span>0.3333</span>$10,9500</p>
                 </button>
+                
             </div>
 
         </div>)

@@ -10,7 +10,7 @@ const Lender = () => {
   };
   return (
     <>
-      <div className="border border-[#584BFF] rounded-xl w-[80%] h-[100px] flex flex-col justify-between p-4 mt-4 mx-4">
+      <div className="border border-[#584BFF] rounded-xl w-[76%] h-[110px] flex flex-col justify-between p-4 mt-4 mx-1">
         <div className="flex justify-between *:  font-bold text-white">
           <p>Recent transaction</p>
           <p className="">View all transactions</p>

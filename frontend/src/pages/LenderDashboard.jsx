@@ -11,7 +11,7 @@ import ProvideLoanModal from "../Components/Modal";
 const LenderDashboard = () => {
   return (
     <div>
-      <section className="mx-4 mt-10">
+      <section className="mx-10 mt-10">
         <div className="flex items-center justify-between">
           <p className="text-white text-3xl">Welcome Back!</p>
           <Notification />

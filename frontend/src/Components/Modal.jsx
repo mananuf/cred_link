@@ -627,8 +627,10 @@ const ProvideLoanModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // trigger loader
     console.log("Loan Amount:", amount);
     await deposit(amount);
+    // close loader
     closeModal(); // Close the modal after submitting
   };
 
