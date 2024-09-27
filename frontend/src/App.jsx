@@ -9,8 +9,6 @@ import "./App.css";
 import Home from "./Components/Home";
 // import Lender from "./Components/Lender";
 import Root from "./Root";
-import Borrow from "./Components/Borrow";
-
 import BorrowersPage from "./pages/BorrowersPage";
 
 import LenderDashboard from "./pages/LenderDashboard";
@@ -19,16 +17,13 @@ import LenderDashboard from "./pages/LenderDashboard";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
+    
       <Route path="/" element={<Root/>}>
-
         <Route index element={<Home/>}/>
-        <Route path="LenderDAshboard" element={<BorrowersPage/>}/>
-
+        <Route path="LenderDAshboard" element={<LenderDashboard/>}/>
         <Route index element={<Home/>}/>
         <Route path="/lenderDashboard" element={<LenderDashboard />} />
-        
-
-        {/* <Route path="/borrowersDashboard" element={<BorrowersPage/>}/> */}
+        <Route path="/borrowersDashboard" element={<BorrowersPage/>}/>
       </Route>
 
     )
