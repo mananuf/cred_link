@@ -70,9 +70,25 @@ contract CredLinkContract {
  
     }
 
-    function applyForLoan(uint _loanId, uint _duration, uint _amount) external {}
+    function applyForLoan(address _lender, uint _duration, uint _amount) external {
+        require(!borrowerData[msg.sender].hasBorrow, 'repay loan to be eligible for borrowing');
+        require(availableLoans[_lender] > 0, 'Not Available');
 
-    function repayLoan(uint loanId) external {}
+        interestedBorrowers[_lender].push(msg.sender);
+
+        emit Events.BorrowerApplySuccessful(_lender, msg.sender, _amount, _duration); 
+    }
+
+    function repayLoan(address _lender) external {
+        require(_lender != address(0), "cannot send to address zero");
+        require(IERC20(tokenAddress).balanceOf(msg.sender) >= borrowerData[msg.sender].amount , "insufficient balance");
+
+        borrowerData[msg.sender].hasBorrow = false;
+        
+        IERC20(tokenAddress).transferFrom(msg.sender, _lender, borrowerData[msg.sender].amount);
+
+        emit Events.RepaySuccessful(_lender, msg.sender, borrowerData[msg.sender].amount, block.timestamp);
+    }
 
 
     // getter functions
