@@ -100,8 +100,6 @@ contract CredLinkContract {
         emit Events.RepaySuccessful(_lender, msg.sender, borrowerData[msg.sender].amount, block.timestamp);
     }
 
-    function openDispute() external {}
-
 
     // getter functions
     function viewInterestedBorrowers() external view returns(address[] memory){
