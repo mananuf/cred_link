@@ -4,7 +4,7 @@ import Footer from "./Components/Footer";
 import backImage from "./assets/svg/backgroundImage.svg"
 const Root =()=>{
     return(
-        <div className=" w-[100vw] h-[100vh] bg-custom-svg bg-cover  bg-center  ">
+        <div className=" md:w-[100vw] md:h-[100%] bg-custom-svg bg-cover  bg-center  ">
             <Navbar/>
             <Outlet/>
             {/* <Footer/> */}

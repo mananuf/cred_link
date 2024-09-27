@@ -7,7 +7,7 @@ const Txs = () => {
         
     }
   return (
-    <div>
+    <div className="p-3">
        <div className="flex items-center gap-4 text-white">
           <img src={BTC} style={imgStyle} alt="BTC Logo" />
           <div className="flex flex-row justify-evenly gap-[175px] items-center text-white">
