@@ -8,6 +8,7 @@ import {
 import "./App.css";
 import Home from "./Components/Home";
 import Root from "./Root";
+import BorrowersPage from "./pages/BorrowersPage";
 
 function App() {
   const router = createBrowserRouter(
