@@ -1,12 +1,12 @@
 import Notification from "../Components/Notification";
 import vector1 from "../assets/Vector.svg";
-import vector2 from "../assets/Vector (1).svg";
+// import vector2 from "../assets/Vector (1).svg";
 import vector3 from "../assets/Vector (2).svg";
-import Transactions from "../Components/Transactions";
 import ActiveLoan from "../Components/ActiveLoan";
 import notice from "../assets/notice.svg";
 import TransactionB from "../Components/TransactionB";
 import Lender from "../Components/Lender";
+import ProvideLoanModal from "../Components/Modal";
 
 const LenderDashboard = () => {
   return (
@@ -50,9 +50,8 @@ const LenderDashboard = () => {
                   <button className="rounded-3xl bg-[#584BFF] text-white flex items-center gap-2 px-3 py-2">
                     Define Loan Limit <img src={vector1} alt="Limit Icon 1" />
                   </button>
-                  <button className="rounded-3xl bg-[#584BFF] text-white flex items-center gap-2 px-3 py-2">
-                    Deposit <img src={vector2} alt="Limit Icon 2" />
-                  </button>
+                 
+                    <ProvideLoanModal/>
                   <button className="rounded-3xl bg-[#584BFF] text-white flex items-center gap-2 px-3 py-2">
                     Withdraw <img src={vector3} alt="Limit Icon 3" />
                   </button>
