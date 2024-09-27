@@ -1,20 +1,21 @@
 import { ethers } from "hardhat";
 
 async function main() {
-    const CredLinkTokenAddress = "0x87708894cAfA31b6ba31E3ef145174948d9f829d";
+    const CredLinkTokenAddress = "0x233A66dB39b5BA93993383b2B4E08E6FA81be8AB";
     const CredLinkToken = await ethers.getContractAt("IERC20", CredLinkTokenAddress);
 
     const CredLinkContractAddress = "0x9F94722FCD154C9372Cf775AA21A60E77a0168DF";
-    const CredLink = await ethers.getContractAt("ISaveERC20", saveERC20ContractAddress);
+    const CredLink = await ethers.getContractAt("ICredLink", CredLinkContractAddress);
 
     // Approve savings contract to spend token
     const approvalAmount = ethers.parseUnits("1000", 18);
 
-    const approveTx = await web3CXI.approve(saveERC20, approvalAmount);
+    const approveTx = await CredLinkToken.approve(CredLink, approvalAmount);
     approveTx.wait();
 
-    const contractBalanceBeforeDeposit = await saveERC20.getContractBalance();
-    console.log("Contract balance before :::", contractBalanceBeforeDeposit);
+    
+    console.log("=============================================================");
+    console.log("Approval to spend token completed");
 
     const depositAmount = ethers.parseUnits("150", 18);
     const depositTx = await saveERC20.deposit(depositAmount);
