@@ -7,27 +7,20 @@ import { useForm } from "react-hook-form";
 
 
 const BorrowersFrame1 = () => {
- 
-
-  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  
   return (
-    <div className="w-full h-full flex flex-col justify-center mt-16">
+    <div className="w-full h-full flex flex-col justify-center py-16">
       <div className="flex flex-col sm:flex-row justify-between w-[90%] space-y-8 sm:space-y-0 sm:space-x-8">
-        {/* First Frame */}
+    
         <div className="w-full sm:w-[400px] h-auto sm:h-[435px] border border-white flex flex-col items-center rounded-2xl p-4 md:ml-20">
-          {/* Loan Repayment Button */}
           <div className="w-full sm:w-80 h-11 flex justify-center items-center border border-white rounded-3xl mt-6 sm:mt-12">
             <p className="text-white text-center">Loan Repayment: 90%</p>
           </div>
-
-          {/* Debt Information */}
           <div className="w-full sm:w-80 mt-6">
             <div className="border-b pb-4">
               <p className="text-xs font-normal text-white mt-4 text-center">
@@ -67,10 +60,9 @@ const BorrowersFrame1 = () => {
               <p>0x12r4598j...6HJ9</p>
             </div>
 
-            <form className="flex flex-col" onSubmit={handleSubmit}>
-              
+            <form className="flex flex-col"onSubmit={handleSubmit(onsubmit)}> 
               <div className="">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-white">
                   Amount:
                 </label>
                 <input
@@ -88,7 +80,7 @@ const BorrowersFrame1 = () => {
               </div>
 
               <div className="">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-white">
                   Address:
                 </label>
                 <input
@@ -106,7 +98,7 @@ const BorrowersFrame1 = () => {
               </div>
 
               <div className="">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-white">
                   Duration:
                 </label>
                 <input
@@ -126,19 +118,15 @@ const BorrowersFrame1 = () => {
               </div>
     
               <button
-                className=" mt-1 border bg-[#584BFF] text-white rounded-3xl py-2 w-32 flex items-center justify-center mx-auto px-3"
+                className="  border bg-[#584BFF] text-white rounded-3xl py-2 w-3/4 flex items-center justify-center mx-auto mt-1 px-3"
                 type="submit"
               >
                 Borrow
               </button>
-              
             </form>
-
-            <div className="w-80 border-black"></div>
           </div>
         </div>
       </div>
-
       <Lender />
     </div>
   );

@@ -645,6 +645,7 @@ const tokenAbi = [
 const ProvideLoanModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false)
 
   const openModal = () => setIsOpen(true);
@@ -652,17 +653,10 @@ const ProvideLoanModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    setLoading(true);
-    console.log("Loan Amount:", amount);
-    await deposit(amount);
-    setLoading(false);
-=======
     // trigger loader
     console.log("Loan Amount:", amount);
     await deposit(amount);
     // close loader
->>>>>>> 699b64b3626de74c8adcf78758f01bd61ad4b60a
     closeModal(); // Close the modal after submitting
   };
 
