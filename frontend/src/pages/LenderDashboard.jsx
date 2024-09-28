@@ -7,8 +7,10 @@ import notice from "../assets/notice.svg";
 import TransactionB from "../Components/TransactionB";
 import Lender from "../Components/Lender";
 import ProvideLoanModal from "../Components/Modal";
+import { Link } from "react-router-dom";
 
 const LenderDashboard = () => {
+  
   return (
     <div>
       <section className="mx-4 mt-10">
@@ -52,9 +54,11 @@ const LenderDashboard = () => {
                   </button>
                  
                     <ProvideLoanModal/>
-                  <button className="rounded-3xl bg-[#584BFF] text-white flex items-center gap-2 px-3 py-2">
-                    Withdraw <img src={vector3} alt="Limit Icon 3" />
+                    <Link to="/borrowersDashboard">
+                  <button  className="rounded-3xl bg-[#584BFF] text-white flex items-center gap-2 px-3 py-2">
+                    Source Loans <img src={vector3} alt="Limit Icon 3" />
                   </button>
+                    </Link>
                 </div>
               </div>
             </div>

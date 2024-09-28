@@ -1,280 +1,304 @@
 import { useState } from "react";
 import vector2 from "../assets/svg/Ellipse.svg"
 import { ethers } from "ethers";
+import { Circles } from "react-loader-spinner";
 
-const contractAddress = "0x429f2336e332e8c4227D965f921E1A3E827b1D9e";
+const contractAddress = "0x5E6c7fFc2A33C2Bfc5fFfb3A8929E5E7C8E81018";
 const tokenAddress = "0x233A66dB39b5BA93993383b2B4E08E6FA81be8AB";
 const credLinkAbi = [
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "_tokenAddress",
-        type: "address",
-      },
+        "internalType": "address",
+        "name": "_tokenAddress",
+        "type": "address"
+      }
     ],
-    stateMutability: "nonpayable",
-    type: "constructor",
+    "stateMutability": "nonpayable",
+    "type": "constructor"
   },
   {
-    inputs: [],
-    name: "InsufficientBalance",
-    type: "error",
+    "inputs": [],
+    "name": "InsufficientBalance",
+    "type": "error"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: true,
-        internalType: "address",
-        name: "_lender",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "_lender",
+        "type": "address"
       },
       {
-        indexed: true,
-        internalType: "address",
-        name: "_borrower",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "_borrower",
+        "type": "address"
       },
       {
-        indexed: true,
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "_duration",
-        type: "uint256",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_duration",
+        "type": "uint256"
+      }
     ],
-    name: "BorrowerApplySuccessful",
-    type: "event",
+    "name": "BorrowerApplySuccessful",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: true,
-        internalType: "address",
-        name: "_approverAddress",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "_approverAddress",
+        "type": "address"
       },
       {
-        indexed: true,
-        internalType: "address",
-        name: "_borrowerAddress",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "_borrowerAddress",
+        "type": "address"
       },
       {
-        indexed: true,
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
     ],
-    name: "BorrowerApproveSuccessful",
-    type: "event",
+    "name": "BorrowerApproveSuccessful",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: true,
-        internalType: "address",
-        name: "_depositor",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "_depositor",
+        "type": "address"
       },
       {
-        indexed: true,
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
     ],
-    name: "LenderDepositSuccessful",
-    type: "event",
+    "name": "LenderDepositSuccessful",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: true,
-        internalType: "address",
-        name: "_lender",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "_lender",
+        "type": "address"
       },
       {
-        indexed: true,
-        internalType: "address",
-        name: "_borrower",
-        type: "address",
+        "indexed": true,
+        "internalType": "address",
+        "name": "_borrower",
+        "type": "address"
       },
       {
-        indexed: true,
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
       },
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "_timeOfRepay",
-        type: "uint256",
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_timeOfRepay",
+        "type": "uint256"
+      }
     ],
-    name: "RepaySuccessful",
-    type: "event",
+    "name": "RepaySuccessful",
+    "type": "event"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: "address",
-        name: "_lender",
-        type: "address",
+        "internalType": "address",
+        "name": "_lender",
+        "type": "address"
       },
       {
-        internalType: "uint256",
-        name: "_duration",
-        type: "uint256",
+        "internalType": "uint256",
+        "name": "_duration",
+        "type": "uint256"
       },
       {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
     ],
-    name: "applyForLoan",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
+    "name": "applyForLoan",
+    "outputs": [
       {
-        internalType: "address",
-        name: "_borrowerToApprove",
-        type: "address",
-      },
-    ],
-    name: "approveBorrower",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-    ],
-    name: "lenderDeposit",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "openDispute",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_lender",
-        type: "address",
-      },
-    ],
-    name: "repayLoan",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "viewApproveBorrowers",
-    outputs: [
-      {
-        components: [
+        "components": [
           {
-            internalType: "uint256",
-            name: "duration",
-            type: "uint256",
+            "internalType": "uint256",
+            "name": "duration",
+            "type": "uint256"
           },
           {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
           },
           {
-            internalType: "bool",
-            name: "hasBorrow",
-            type: "bool",
-          },
+            "internalType": "bool",
+            "name": "hasBorrow",
+            "type": "bool"
+          }
         ],
-        internalType: "struct CredLinkContract.borrowerDetails[]",
-        name: "",
-        type: "tuple[]",
-      },
+        "internalType": "struct CredLinkContract.borrowerDetails",
+        "name": "",
+        "type": "tuple"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "viewAvailableLoans",
-    outputs: [
+    "inputs": [
       {
-        internalType: "address[]",
-        name: "",
-        type: "address[]",
-      },
-      {
-        internalType: "uint256[]",
-        name: "",
-        type: "uint256[]",
-      },
+        "internalType": "address",
+        "name": "_borrowerToApprove",
+        "type": "address"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "name": "approveBorrower",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: "viewInterestedBorrowers",
-    outputs: [
+    "inputs": [
       {
-        components: [
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "lenderDeposit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "openDispute",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_lender",
+        "type": "address"
+      }
+    ],
+    "name": "repayLoan",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "viewApproveBorrowers",
+    "outputs": [
+      {
+        "components": [
           {
-            internalType: "uint256",
-            name: "duration",
-            type: "uint256",
+            "internalType": "uint256",
+            "name": "duration",
+            "type": "uint256"
           },
           {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
           },
           {
-            internalType: "bool",
-            name: "hasBorrow",
-            type: "bool",
-          },
+            "internalType": "bool",
+            "name": "hasBorrow",
+            "type": "bool"
+          }
         ],
-        internalType: "struct CredLinkContract.borrowerDetails[]",
-        name: "",
-        type: "tuple[]",
-      },
+        "internalType": "struct CredLinkContract.borrowerDetails[]",
+        "name": "",
+        "type": "tuple[]"
+      }
     ],
-    stateMutability: "view",
-    type: "function",
+    "stateMutability": "view",
+    "type": "function"
   },
-];
+  {
+    "inputs": [],
+    "name": "viewAvailableLoans",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "viewInterestedBorrowers",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "duration",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "hasBorrow",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct CredLinkContract.borrowerDetails[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
 
 const tokenAbi = [
   {
@@ -621,14 +645,17 @@ const tokenAbi = [
 const ProvideLoanModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log("Loan Amount:", amount);
     await deposit(amount);
+    setLoading(false);
     closeModal(); // Close the modal after submitting
   };
 
@@ -660,19 +687,12 @@ const ProvideLoanModal = () => {
     const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, signer);
     console.log(tokenContract);
 
-    amount = ethers.utils.parseUnits(amount, 18);
+    amount = ethers.utils.parseUnits(`${amount}`, 18);
 
-    const gasLimit = 100000;
-
-    const approveTx = await tokenContract.approve(contractAddress, amount, {
-      gasLimit: gasLimit,
-    });
-    await approveTx.wait();
-
-    console.log(approveTx);
-    const depositTx = await credlinkContract.deposit(amount);
+ 
+    const depositTx = await credlinkContract.lenderDeposit(amount);
     await depositTx.wait();
-
+  
     alert("deposit successful");
   }
 
@@ -716,11 +736,22 @@ const ProvideLoanModal = () => {
                 >
                   Cancel
                 </button>
+                {loading &&
+                (<Circles
+                height="80"
+                width="80"
+                color="#4fa94d"
+                ariaLabel="circles-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                />)}
                 <button
                   type="submit"
+                  disabled={loading}
                   className="bg-[#584BFF] text-white px-4 py-2 rounded-lg"
                 >
-                  Submit
+                  {loading ? "Processing":"Submit"}
                 </button>
               </div>
             </form>
